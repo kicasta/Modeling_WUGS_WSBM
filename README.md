@@ -29,3 +29,5 @@ Note that the script parameters vary, but are always paths to save the output of
 ### Example of use:
 
 `python draw_wugs.py <path_to_graphs> <path_to_pickled_data> <output_path>`
+
+For a better understanding of the code, how it is structured and so on, we put in some way all the scripts in a notebook in the example directory. Notice that not always the code in the script is 100% the same, since we wanted to keep things simple in the notebook. It is also configured to run on colab in case you want to just test something. 
