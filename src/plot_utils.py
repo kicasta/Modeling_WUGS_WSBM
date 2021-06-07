@@ -234,3 +234,51 @@ def draw(g, title, b=None, show_img=False):
       ink_scale=0.9,
       overlap=True
       )
+
+
+def correct_utf8(graphs):
+  utf8_correct = {"Fu":"Fuß", 
+                "vergnnen": "vergönnen", 
+                "Naturschnheit": "Naturschönheit",
+                "abgebrht" : "abgebrüht",
+                "Tragfhigkeit" : "Tragfähigkeit",
+                "Miklang": "Mißklang",
+                "Ackergert": "Ackergerät",
+                "berspannen":"überspannen",
+                "Engpa":"Engpaß"
+                }
+  labels = []
+  for g in graphs:
+    if g in utf8_correct:
+        labels.append(utf8_correct[g])
+    else:
+      labels.append(g)
+  return labels
+
+def plot_single_stat(graphs, stat, label, limy=True):
+  
+  graphs = correct_utf8(graphs)
+  
+  fig, ax = plt.subplots(figsize=(14,7))
+
+  plt.grid()
+  zipped_pairs = zip(stat, graphs) 
+  
+  sorted_pairs = sorted(zipped_pairs, reverse=True)
+  sorted_graphs = [x for _, x in sorted_pairs]
+  sorted_stats = [x for x, _ in sorted_pairs]
+
+  plt.scatter(sorted_graphs, sorted_stats)
+
+  plt.ylabel(label, fontsize=18)
+
+  plt.xticks(rotation=90)
+  plt.yticks(fontsize=18)
+
+  if limy:
+    plt.ylim(0,1.1)
+  else:
+    plt.yticks(np.arange(min(stat), max(stat)+1, step=1.0))
+
+  #plt.legend(fontsize=18)
+  plt.show()
