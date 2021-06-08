@@ -1,6 +1,10 @@
 # WSBM_WUG_Modelling
 Source Code and Experiments for the paper: Modeling Sense Structure in Word Usage Graphswith the Weighted Stochastic Block Model
 
+If you use this repository for academic research, please [cite](#bibtex) this paper:
+
+- Dominik Schlechtweg, Enrique Castaneda, Jonas Kuhn, and Sabine Schulte im Walde. 2021. **Modeling Sense Structure in Word Usage Graphs with the Weighted Stochastic Block Model**. In Proceedings of the 10th Joint Conference on Lexical and Computational Semantics.
+
 ## Description
 
 In this project we present 2 function files:
@@ -31,3 +35,13 @@ Note that the script parameters vary, but are always paths to save the output of
 `python draw_wugs.py <path_to_graphs> <path_to_pickled_data> <output_path>`
 
 For a better understanding of the code, how it is structured and so on, we put in some way all the scripts in a notebook in the example directory. Notice that not always the code in the script is 100% the same, since we wanted to keep things simple in the notebook. It is also configured to run on colab in case you want to just test something. 
+
+```
+@inproceedings{Schlechtweg2021wsbm,
+	Author = {Schlechtweg, Dominik and Castaneda, Enrique and Kuhn, Jonas and {Schulte im Walde}, Sabine},
+	Booktitle = {{Proceedings of the 10th Joint Conference on Lexical and Computational Semantics}},
+	Title = {Modeling Sense Structure in Word Usage Graphs with the Weighted Stochastic Block Model},
+	Year = {2021}
+}
+```
+
