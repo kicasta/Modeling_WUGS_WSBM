@@ -1,5 +1,5 @@
 # WSBM_WUG_Modelling
-Source Code and Experiments for this paper:
+Source Code and Experiments for
 
 - Dominik Schlechtweg, Enrique Castaneda, Jonas Kuhn, and Sabine Schulte im Walde. 2021. **Modeling Sense Structure in Word Usage Graphs with the Weighted Stochastic Block Model**. In Proceedings of the 10th Joint Conference on Lexical and Computational Semantics.
 
