@@ -3,7 +3,7 @@ Source Code and Experiments for
 
 - Dominik Schlechtweg, Enrique Castaneda, Jonas Kuhn, and Sabine Schulte im Walde. 2021. **Modeling Sense Structure in Word Usage Graphs with the Weighted Stochastic Block Model**. In Proceedings of the 10th Joint Conference on Lexical and Computational Semantics.
 
-If you use this repository for academic research, please [cite](#bibtex) us. Find data and further code on [the main WUG page](https://www.ims.uni-stuttgart.de/data/wugs).
+If you use this repository for academic research, please [cite](#bibtex) us. Find data and further code on the [WUGsite](https://www.ims.uni-stuttgart.de/data/wugs).
 
 
 ## Description
