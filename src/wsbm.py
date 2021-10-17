@@ -30,9 +30,6 @@ def make_weights(G=nx.Graph(), attributes=[], test_statistic=np.median, non_valu
   :return G: updated graph
   """
   for (i,j) in G.edges():
-
-      #print(G[i][j])
-
       values = [G[i][j]['attributes'][attribute] for attribute in attributes if attribute in G[i][j]['attributes']]         
               
       if values == []:
@@ -44,7 +41,6 @@ def make_weights(G=nx.Graph(), attributes=[], test_statistic=np.median, non_valu
           weight = normalization(test_statistic(data))
       else:
           weight = float('nan')
-
       G[i][j]['weight'] = weight
   return G
 
@@ -124,18 +120,12 @@ def open_graph(g_path):
 
   return graph, s_gt, pos
 
-def minimize(s_gt, distribution="discrete-binomial", pure_w=True, deg_corr=False, overlap=False):
-  state = gt.minimize_blockmodel_dl(
-      s_gt, 
-      B_min=1, 
-      B_max=30,
-      deg_corr=deg_corr, 
-      state_args=dict(recs=[s_gt.ep.shifted_weight],rec_types=[distribution]), 
-      mcmc_args=dict(niter=100,entropy_args=dict(adjacency=False,degree_dl=False)),
-      verbose=False,
-      overlap=overlap)
-      
-  return state
+def minimize(s_gt, distribution="discrete-binomial", deg_corr=False, overlap=False):
+  return gt.minimize_blockmodel_dl(
+        s_gt,
+        state_args=dict(deg_corr=deg_corr, recs=[s_gt.ep.shifted_weight], rec_types=[distribution],  overlap=overlap),
+        multilevel_mcmc_args=dict(B_min=1, B_max=30, niter=100, entropy_args=dict(adjacency=False, degree_dl=False))
+    )
 
 def get_blocks(state):
   b = state.get_blocks()
@@ -153,7 +143,7 @@ def find_best_distribution(g, verbose=False):
   current_entropy = np.inf
 
   for dist in distributions:
-      state = minimize(g, overlap=False, deg_corr=False)
+      state = minimize(g, distribution=dist, overlap=False, deg_corr=False)
       entropy = state.entropy(adjacency=False,degree_dl=False)
       if entropy < current_entropy:
         current_entropy = entropy
